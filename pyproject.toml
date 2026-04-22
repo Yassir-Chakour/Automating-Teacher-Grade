@@ -3,7 +3,9 @@ name = "ismagi-agent"
 version = "0.1.0"
 description = ""
 authors = ["Yassir-Chakour <yassir@shinobiautomation.com>"]
-package-mode = false
+packages = [
+    { include = "src" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.12"

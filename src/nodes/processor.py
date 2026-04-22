@@ -1,4 +1,4 @@
-from state import AgentState
+from src.state import AgentState
 
 def proccess_data_node(state: AgentState):
     print("--- 🛠️ PROCESSING DATA & IDENTIFYING CLASSES ---")

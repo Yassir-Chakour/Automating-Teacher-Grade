@@ -1,6 +1,6 @@
 import gspread
-from state import AgentState
-from utils.google_client import google_client
+from src.state import AgentState
+from src.utils.google_client import google_client
 
 def sheets_managment(state: AgentState):
     sh = google_client()

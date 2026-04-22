@@ -1,5 +1,5 @@
-from utils.supabase_client import get_supabase_client
-from state import AgentState
+from src.utils.supabase_client import get_supabase_client
+from src.state import AgentState
 
 def fetch_students_node(state: AgentState):
     print("--- 🔍 FETCHING STUDENTS FROM DATABASE ---")

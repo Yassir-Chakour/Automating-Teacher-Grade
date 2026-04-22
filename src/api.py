@@ -1,6 +1,5 @@
 from fastapi import FastAPI, Request
-from  graph import app
-
+from src.graph import app
 api = FastAPI()
 
 @api.post("/sync-grades")
@@ -9,8 +8,6 @@ async def sync_grades(request: Request):
 
     initial_input = {
         "grades": data.get('students', []),
-        "students": [],
-        "class_list": [],
         "logs": []
     }
 

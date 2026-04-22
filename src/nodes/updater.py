@@ -1,8 +1,8 @@
-from state import AgentState
-from utils.supabase_client import get_supabase_client
+from src.state import AgentState
+from src.utils.supabase_client import get_supabase_client
 
 def sync_grades_back_node(state: AgentState):
-    incoming = state['grades']
+    incoming = state.get('grades', [])
     supabase = get_supabase_client()
 
     print(f"🔄 Syncing {len(incoming)} grades to Supabase...")
@@ -19,8 +19,8 @@ def sync_grades_back_node(state: AgentState):
                     .eq("student_name", student)
                     .execute()
                 )
-                pass
+                print(f"✅ Updated {student} with grade: {grade}")
             except Exception as e:
-                state['logs'].append({f"message": f"Error while trying to save grade, {e}"})
+                state['logs'].append(f"Error while saving grade for {student}: {e}")
 
     return state

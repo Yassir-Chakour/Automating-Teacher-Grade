@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from src.graph import app
 api = FastAPI()
 
-@api.post("start-setup")
+@api.post("/start-setup")
 async def start_setup():
     print("🚀 Remote Trigger: Starting Setup Mission...")
 

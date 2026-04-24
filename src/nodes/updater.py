@@ -8,7 +8,8 @@ def sync_grades_back_node(state: AgentState):
     print(f"🔄 Syncing {len(incoming)} grades to Supabase...")
 
     for entry in incoming:
-        student = entry.get('student_name')
+        student_id = entry.get('id')
+        student_name = entry.get('student_name')
         grade = entry.get('grade')
 
         if grade:
@@ -16,11 +17,11 @@ def sync_grades_back_node(state: AgentState):
                 response = (
                     supabase.table("school_data")
                     .update({"grade_note": grade})
-                    .eq("student_name", student)
+                    .eq("id", student_id)
                     .execute()
                 )
-                print(f"✅ Updated {student} with grade: {grade}")
+                print(f"✅ Updated {student_name} with grade: {grade}")
             except Exception as e:
-                state['logs'].append(f"Error while saving grade for {student}: {e}")
+                state['logs'].append(f"Error while saving grade for {student_name}: {e}")
 
     return state
